@@ -105,10 +105,10 @@ jobs:
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git checkout -b "${BRANCH}"
 
-          sed -i "s/default: '[0-9][^']*'/default: '${VERSION}'/" \
-            .github/workflows/build-fluxcd-fips.yml
+          sed -i "s/VERSION:-[0-9][^}]*/VERSION:-${VERSION}/" \
+            build-fluxcd-fips.sh
 
-          git add .github/workflows/build-fluxcd-fips.yml
+          git add build-fluxcd-fips.sh
           git commit -m "chore: bump default version to ${VERSION}"
           git push origin "${BRANCH}"
 
