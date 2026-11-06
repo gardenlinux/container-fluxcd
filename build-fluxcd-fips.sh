@@ -10,7 +10,7 @@ IMAGE_NAME="${IMAGE_NAME:-gl-fips-fluxcd}"
 ARCH="${ARCH:-$(uname -m | sed 's/x86_64/amd64/;s/aarch64/arm64/')}"
 VERSION="${VERSION:-2.9.6}"
 UPSTREAM_GIT_SHA="${UPSTREAM_GIT_SHA:-b9c17924adb533d3617ec7de97a7b0f4acc07b39}"
-GO_IMAGE="${GO_IMAGE:-golang:1.26-bookworm}"
+GO_IMAGE="${GO_IMAGE:-golang:1.27-bookworm}"
 KUSTOMIZE_VERSION="${KUSTOMIZE_VERSION:-5.6.0}"
 
 # --- prerequisites -----------------------------------------------------------
@@ -40,7 +40,7 @@ mkdir -p "${WORKDIR}"
 # --- generate Dockerfile.fips ------------------------------------------------
 
 cat > "${WORKDIR}/Dockerfile.fips" <<DOCKERFILE
-ARG GO_IMAGE=golang:1.26-bookworm
+ARG GO_IMAGE=golang:1.27-bookworm
 ARG BASE_IMAGE=ghcr.io/gardenlinux/gardenlinux/fips:1877.22
 
 FROM --platform=\$BUILDPLATFORM \${GO_IMAGE} AS builder
