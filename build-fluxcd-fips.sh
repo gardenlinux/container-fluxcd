@@ -8,10 +8,10 @@ BASE_IMAGE="${BASE_IMAGE:-ghcr.io/gardenlinux/gardenlinux/fips:1877.22}"
 WORKDIR="${WORKDIR:-./.build/fluxcd-fips-build}"
 IMAGE_NAME="${IMAGE_NAME:-gl-fips-fluxcd}"
 ARCH="${ARCH:-$(uname -m | sed 's/x86_64/amd64/;s/aarch64/arm64/')}"
-VERSION="${VERSION:-2.9.6}"
+VERSION="${VERSION:-2.10.0}"
 UPSTREAM_GIT_SHA="${UPSTREAM_GIT_SHA:-b9c17924adb533d3617ec7de97a7b0f4acc07b39}"
 GO_IMAGE="${GO_IMAGE:-golang:1.27-bookworm}"
-KUSTOMIZE_VERSION="${KUSTOMIZE_VERSION:-5.6.0}"
+KUSTOMIZE_VERSION="${KUSTOMIZE_VERSION:-2.10.0}"
 
 # --- prerequisites -----------------------------------------------------------
 
@@ -96,7 +96,7 @@ echo "Built: ${IMAGE_NAME}:${VERSION}-${ARCH}"
 
 # --- SBOM --------------------------------------------------------------------
 # Syft version is pinned; update SYFT_VERSION to pick up a newer release.
-SYFT_VERSION="${SYFT_VERSION:-1.56.0}"
+SYFT_VERSION="${SYFT_VERSION:-2.10.0}"
 SYFT_BIN="${WORKDIR}/syft"
 
 install_syft() {
