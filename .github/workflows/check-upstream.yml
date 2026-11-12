@@ -112,7 +112,7 @@ jobs:
             git checkout -b "${BRANCH}"
           fi
 
-          sed -i "s|^VERSION="${VERSION:-[^}]*}"|VERSION="${VERSION:-${VERSION}}"|" \
+          sed -i 's|^VERSION="${VERSION:-[^}]*}"|VERSION="${VERSION:-'"${VERSION}"'}"|' \
             build-fluxcd-fips.sh
 
           git add build-fluxcd-fips.sh
